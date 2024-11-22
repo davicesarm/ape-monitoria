@@ -5,7 +5,7 @@ import math
 
 x = int(input())
 
-total = 1
+total = 1 
 somar = False
 
 # Ao inves de usar 20 termos, usamos 40. por algum motivo que desconheço rs
@@ -32,3 +32,7 @@ print(total)
 
 print("\nGabarito:")
 print(math.cos(20))
+
+# seq = list(range(2, 80, 2))
+# print(seq)
+# print(len(seq))
