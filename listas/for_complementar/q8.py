@@ -1,38 +1,24 @@
-""" 8. Escreva um programa que calcule o valor do cosseno de X(lido em radianos), através de 20 termos da série
-abaixo """
-
 import math
 
-x = int(input())
+x = float(input("Digite o valor de x (em radianos): "))
 
-total = 1 
-somar = False
 
-# Ao inves de usar 20 termos, usamos 40. por algum motivo que desconheço rs
-for i in range(2, 80, 2): 
-    # Calcular fatorial ----
+termos = 20
+
+# Reduz x ao intervalo [0, 2*pi] para maior precisão
+x = x % (2 * math.pi)
+cosseno = 0
+
+for n in range(termos):
     fatorial = 1
-    for j in range(2, i + 1):
-        fatorial = fatorial * j
-    
-    # Calcular termo ----
-    resultado = (x ** i) / fatorial
-    
-    # Somar ou subtrair ----
-    if somar: 
-        total += resultado
-        somar = False
-    else:
-        total -= resultado
-        somar = True
-    
-    
-print("Nossa resposta:")
-print(total)
+    for i in range(1, 2 * n + 1):
+        fatorial *= i
+    termo = ((-1) ** n) * (x ** (2 * n)) / fatorial
+    cosseno += termo
 
-print("\nGabarito:")
-print(math.cos(20))
+resultado = cosseno
+resultado_math = math.cos(x)
 
-# seq = list(range(2, 80, 2))
-# print(seq)
-# print(len(seq))
+print(f"O valor do cosseno de {x} usando a série é aproximadamente {resultado}")
+print(f"O valor do cosseno de {x} usando math.cos é {resultado_math}")
+
